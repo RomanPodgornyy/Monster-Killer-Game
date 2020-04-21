@@ -6,7 +6,7 @@ const HEAL_VALUE = 25;
 const HEAL_CHARGES = 3;
 
 // Base variables
-let maxHealth = 10;
+let maxHealth = 250;
 let currentMonsterHealth = maxHealth;
 let currentPlayerHealth = maxHealth;
 let healCounter = HEAL_CHARGES;
