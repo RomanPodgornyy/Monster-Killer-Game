@@ -18,6 +18,14 @@ function attackEvent() {
     
     currentMonsterHealth -= damageToMonster;
     currentPlayerHealth -= damageToPlayer;
+
+    if (currentMonsterHealth <= 0 && currentPlayerHealth > 0) {
+        alert('You won!');
+    } else if (currentPlayerHealth <= 0 && currentMonsterHealth > 0) {
+        alert('You lose!');
+    } else if (currentPlayerHealth <= 0 && currentMonsterHealth <= 0) {
+        alert('You have a draw!');
+    }
 }
 
 attackBtn.addEventListener('click', attackEvent);
