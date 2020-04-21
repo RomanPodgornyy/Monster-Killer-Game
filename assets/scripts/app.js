@@ -13,8 +13,11 @@ adjustHealthBars(maxHealth);
 
 // Attack monster
 function attackEvent() {
-    const damage = dealMonsterDamage(ATTACK_VALUE);
-    currentMonsterHealth -= damage;
+    const damageToMonster = dealMonsterDamage(ATTACK_VALUE);
+    const damageToPlayer = dealPlayerDamage(MONSTER_ATTACK_VALUE);
+    
+    currentMonsterHealth -= damageToMonster;
+    currentPlayerHealth -= damageToPlayer;
 }
 
 attackBtn.addEventListener('click', attackEvent);
