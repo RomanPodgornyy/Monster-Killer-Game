@@ -5,8 +5,16 @@ const MONSTER_ATTACK_VALUE = 15;
 const HEAL_VALUE = 25;
 const HEAL_CHARGES = 3;
 
+// Set 'maxHealth' variable
+const enteredValue = prompt('Please, set maximum health for you and the monster.', '');
+
+let maxHealth = parseInt(enteredValue);
+
+if (isNaN(maxHealth) || maxHealth <= 0) {
+    maxHealth = 100;
+}
+
 // Base variables
-let maxHealth = 250;
 let currentMonsterHealth = maxHealth;
 let currentPlayerHealth = maxHealth;
 let healCounter = HEAL_CHARGES;
