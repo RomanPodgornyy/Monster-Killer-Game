@@ -47,6 +47,10 @@ function attackEvent(mode) {
     } else if (currentPlayerHealth <= 0 && currentMonsterHealth <= 0) {
         alert('You have a draw! :O');
     }
+
+    if (currentPlayerHealth <= 0 || currentMonsterHealth <= 0) {
+        reset();
+    }
 }
 
 // Heal player
@@ -71,6 +75,16 @@ function healEvent() {
     increasePlayerHealth(healValue);
     currentPlayerHealth += healValue;
     alert(`You have ${healCounter} charges left.`); 
+}
+
+// Reset game
+function reset() {
+    resetGame(maxHealth);
+    addBonusLife();
+    hasBonusLife = true;
+    healCounter = HEAL_CHARGES;
+    currentMonsterHealth = maxHealth;
+    currentPlayerHealth = maxHealth;
 }
 
 function baseAttack() {
