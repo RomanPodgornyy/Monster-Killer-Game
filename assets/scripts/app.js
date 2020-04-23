@@ -26,10 +26,15 @@ function attackEvent(mode) {
     }
 
     const damageToMonster = dealMonsterDamage(maxDamage);
-    const damageToPlayer = dealPlayerDamage(MONSTER_ATTACK_VALUE);
-    const initialHealth = currentPlayerHealth;
     
     currentMonsterHealth -= damageToMonster;
+}
+
+// End round
+function endRound() {
+    const initialHealth = currentPlayerHealth;
+    const damageToPlayer = dealPlayerDamage(MONSTER_ATTACK_VALUE);
+
     currentPlayerHealth -= damageToPlayer;
 
     if (currentPlayerHealth <= 0 && hasBonusLife) {
@@ -89,10 +94,12 @@ function reset() {
 
 function baseAttack() {
     attackEvent('ATTACK');
+    endRound();
 }
 
 function strongAttack() {
     attackEvent('STRONG_ATTACK');
+    endRound();
 }
 
 // Event listeners
