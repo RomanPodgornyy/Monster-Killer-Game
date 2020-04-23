@@ -10,6 +10,7 @@ let maxHealth = 250;
 let currentMonsterHealth = maxHealth;
 let currentPlayerHealth = maxHealth;
 let healCounter = HEAL_CHARGES;
+let hasBonusLife = true;
 
 // Set healthbars value
 adjustHealthBars(maxHealth);
@@ -26,9 +27,18 @@ function attackEvent(mode) {
 
     const damageToMonster = dealMonsterDamage(maxDamage);
     const damageToPlayer = dealPlayerDamage(MONSTER_ATTACK_VALUE);
+    const initialHealth = currentPlayerHealth;
     
     currentMonsterHealth -= damageToMonster;
     currentPlayerHealth -= damageToPlayer;
+
+    if (currentPlayerHealth <= 0 && hasBonusLife) {
+        hasBonusLife = false;
+        removeBonusLife();
+        currentPlayerHealth = initialHealth;
+        setPlayerHealth(initialHealth);
+        alert('You have a second chance! :)');
+    }
 
     if (currentMonsterHealth <= 0 && currentPlayerHealth > 0) {
         alert('You won!');
