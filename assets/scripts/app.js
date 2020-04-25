@@ -4,6 +4,8 @@ const STRONG_ATTACK_VALUE = 30;
 const MONSTER_ATTACK_VALUE = 15;
 const HEAL_VALUE = 25;
 const HEAL_CHARGES = 3;
+const MODE_ATTACK = 'ATTACK';
+const MODE_STRONG_ATTACK = 'STRONG_ATTACK'
 
 // Set 'maxHealth' variable
 const enteredValue = prompt('Please, set maximum health for you and the monster.', '');
@@ -27,9 +29,9 @@ adjustHealthBars(maxHealth);
 function attackEvent(mode) {
     let maxDamage;
 
-    if (mode == 'ATTACK') {
+    if (mode == MODE_ATTACK) {
         maxDamage = ATTACK_VALUE;
-    } else if (mode == 'STRONG_ATTACK') {
+    } else if (mode == MODE_STRONG_ATTACK) {
         maxDamage = STRONG_ATTACK_VALUE;
     }
 
@@ -101,12 +103,12 @@ function reset() {
 }
 
 function baseAttack() {
-    attackEvent('ATTACK');
+    attackEvent(MODE_ATTACK);
     endRound();
 }
 
 function strongAttack() {
-    attackEvent('STRONG_ATTACK');
+    attackEvent(MODE_STRONG_ATTACK);
     endRound();
 }
 
